@@ -26,17 +26,13 @@ import warnings
 import httpx
 import anthropic
 
-# Suppress the InsecureRequestWarning that httpx raises when verify=False.
-# In a real project, install the Fiddler root certificate instead.
-warnings.filterwarnings("ignore", message=".*SSL.*")
-
 # ---------------------------------------------------------------------------
 # Configuration  (override via environment variables)
 # ---------------------------------------------------------------------------
 
 FIDDLER_PROXY = os.environ.get("FIDDLER_PROXY", "http://127.0.0.1:8866")
-USE_PROXY = os.environ.get("USE_PROXY", "true").lower() == "true"
-API_KEY = os.environ.get("ANTHROPIC_API_KEY")
+USE_PROXY = os.environ.get("USE_PROXY", "true").lower() == "true" # Alternatively, set to "false" and use the Fiddler's terminal to forward traffic only when needed.
+API_KEY = os.environ.get("ANTHROPIC_API_KEY") 
 MODEL = os.environ.get("ANTHROPIC_MODEL", "claude-sonnet-4-20250514")
 
 # ---------------------------------------------------------------------------
@@ -86,6 +82,19 @@ def build_client() -> anthropic.Anthropic:
 
     When USE_PROXY=true (the default), all HTTPS traffic is routed through
     Fiddler Everywhere so the Agent Calls tab can capture and cache the calls.
+
+    SSL verification behaviour (proxy mode only):
+      - If SSL_CERT_FILE or REQUESTS_CA_BUNDLE points to the exported Fiddler
+        root CA (PEM), httpx verifies Fiddler's certificate properly — no
+        verify=False needed.  Export the CA from Fiddler Everywhere via
+        Settings > HTTPS > Advanced > Export Root Certificate (PEM/ASCII).
+      - Otherwise verification is disabled (verify=False) as a convenience for
+        local demo use only.  Never use this in production.
+
+    When USE_PROXY=false the agent connects directly to the provider.  Traffic
+    can still be captured by launching this script from Fiddler's built-in
+    terminal (Traffic pane → Terminal button), which pre-configures the proxy
+    and CA for every child process automatically.
     """
     if not API_KEY:
         raise EnvironmentError(
@@ -96,19 +105,32 @@ def build_client() -> anthropic.Anthropic:
 
     if USE_PROXY:
         print(f"[proxy]  Routing HTTPS calls through Fiddler at {FIDDLER_PROXY}")
-        print(
-            "[proxy]  SSL verification is disabled to accept Fiddler's intercepting "
-            "certificate.\n"
-            "[proxy]  For production use, install the Fiddler root CA certificate "
-            "and remove verify=False.\n"
-        )
-        http_client = httpx.Client(
-            proxy=FIDDLER_PROXY,
-            verify=False,  # Trust Fiddler's CA during the demo
-        )
+
+        # Prefer an explicit CA bundle so verify=False is not needed.
+        ssl_cert = os.environ.get("SSL_CERT_FILE") or os.environ.get("REQUESTS_CA_BUNDLE")
+        if ssl_cert:
+            verify: str | bool = ssl_cert
+            print(f"[proxy]  SSL verification using CA bundle: {ssl_cert}")
+        else:
+            verify = False
+            # Suppress the InsecureRequestWarning raised by httpx when verify=False.
+            warnings.filterwarnings("ignore", message=".*SSL.*")
+            print(
+                "[proxy]  SSL verification is disabled (verify=False) — demo mode only.\n"
+                "[proxy]  To remove verify=False, export the Fiddler root CA and set\n"
+                "[proxy]  SSL_CERT_FILE or REQUESTS_CA_BUNDLE to its path.\n"
+                "[proxy]  See README.md — SSL / TLS Note for step-by-step instructions."
+            )
+
+        http_client = httpx.Client(proxy=FIDDLER_PROXY, verify=verify)
         return anthropic.Anthropic(api_key=API_KEY, http_client=http_client)
 
-    # Direct connection — no Fiddler interception
+    # Direct connection — no Fiddler proxy in the code.
+    # Traffic can still be captured by running this script from Fiddler's
+    # built-in terminal (Traffic pane → Terminal button).
+    print("[proxy]  USE_PROXY=false — connecting directly to the provider.")
+    print("[proxy]  To capture traffic without code changes, launch this script")
+    print("[proxy]  from Fiddler's built-in terminal instead.")
     return anthropic.Anthropic(api_key=API_KEY)
 
 
