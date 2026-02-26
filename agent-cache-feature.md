@@ -8,7 +8,9 @@ position: 60
 
 # Agent Cache
 
-When building and testing automated agents that communicate with model-provider endpoints over HTTPS, every test run sends a live request and consumes tokens. **Agent Cache** breaks that cycle by letting you cache a captured endpoint response and have Fiddler Everywhere replay it for matching calls—so your testing no longer incurs token costs after the first capture.
+Reuse prior agent responses during development and testing to shorten the feedback loop and speed up iterations—while keeping execution costs under control. This is **Agent Cache**.
+
+When building and testing automated agents that communicate with model-provider endpoints over HTTPS, every test run sends a live request and consumes tokens. Agent Cache breaks that cycle by letting you cache a captured endpoint response and have Fiddler Everywhere replay it for matching calls—so your testing no longer incurs token costs after the first capture.
 
 ## Overview
 
@@ -17,6 +19,19 @@ Fiddler Everywhere adds an **Agent Calls** tab in the **Traffic** pane, alongsid
 The **Agent Calls** tab is a focused view over sessions already captured in **Live Traffic**. It automatically filters and displays HTTPS sessions that target supported model-provider endpoints, such as OpenAI and Gemini.
 
 >important The **Agent Calls** tab reflects sessions that have already been captured. You must have active traffic capture running, or previously captured sessions present in **Live Traffic**, before any sessions appear in **Agent Calls**.
+
+## Why Agent Cache
+
+**Faster Iterations**
+Cache previous runs inside Fiddler Everywhere to cut down wait time between tweaks, so you can validate changes faster and move through iterations with less friction.
+
+**Lower Execution Costs**
+Reuses prior development and testing responses captured in Fiddler Everywhere, so you avoid repeated executions and unnecessary calls—keeping spend under control as you iterate.
+
+**More Deterministic Testing**
+Produce consistent outcomes from the same inputs, making it easier to compare iterations, isolate regressions, and trust what changed.
+
+---
 
 ## Availability
 
