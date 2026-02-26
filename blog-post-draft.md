@@ -41,6 +41,21 @@ Disable the toggle at any time and live traffic resumes, no restarts required.
 
 ---
 
+## Faster Iterations, Lower Costs, More Predictable Testing
+
+Agent Cache is built around three practical benefits that matter most during active development.
+
+**Faster Iterations.**
+Cache a previous run inside Fiddler Everywhere and cut the wait time between tweaks. You validate changes immediately and move through the development loop with far less friction.
+
+**Lower Execution Costs.**
+Reuse responses already captured in Fiddler Everywhere instead of triggering repeated live calls. The provider never sees the duplicate requests — so spend stays under control as you iterate.
+
+**More Deterministic Testing.**
+Identical inputs produce identical outputs, every time. That makes it straightforward to compare iterations, isolate regressions, and be confident about exactly what changed between runs.
+
+---
+
 ## Demo: Bug Report Analyzer
 
 To make this tangible, let's walk through [agent-cache-demo](https://github.com/your-org/agent-cache-demo) — a minimal Python agent that takes a fixed bug report and returns a structured analysis (severity, category, a plain-English summary, and a suggested next step). The input never changes between runs, which makes it a perfect showcase for Agent Cache: the model's answer to an identical prompt is always the same, so there is genuinely no reason to pay for it more than once.

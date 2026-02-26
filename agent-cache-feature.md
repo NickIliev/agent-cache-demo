@@ -23,15 +23,13 @@ The **Agent Calls** tab is a focused view over sessions already captured in **Li
 ## Why Agent Cache
 
 **Faster Iterations**
-Cache previous runs inside Fiddler Everywhere to cut down wait time between tweaks, so you can validate changes faster and move through iterations with less friction.
+Replaying a captured response is instant. Instead of waiting on a round-trip to the provider on every run, you get a result back immediately—shortening the feedback loop so you can move through prompt and code changes without unnecessary delays.
 
 **Lower Execution Costs**
-Reuses prior development and testing responses captured in Fiddler Everywhere, so you avoid repeated executions and unnecessary calls—keeping spend under control as you iterate.
+Each cached run consumes zero tokens on the provider side. During active development—where the same request may be triggered dozens of times across a team—this directly reduces the token spend that accumulates before a feature is even complete.
 
 **More Deterministic Testing**
-Produce consistent outcomes from the same inputs, making it easier to compare iterations, isolate regressions, and trust what changed.
-
----
+A cached response is fixed and repeatable. Running the same agent logic against the same response on every iteration makes it straightforward to verify that a code change had the intended effect, without having to account for variability in live model output.
 
 ## Availability
 
