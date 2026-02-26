@@ -28,8 +28,8 @@ source .venv/bin/activate        # macOS / Linux
 pip install -r requirements.txt
 
 # 3. Set your API key
-export ANTHROPIC_API_KEY=sk-ant-...   # macOS / Linux
-set ANTHROPIC_API_KEY=sk-ant-...      # Windows
+export ANTHROPIC_API_KEY=sk-ant-...   # macOS / Linux / Windows (Git Bash)
+set ANTHROPIC_API_KEY=sk-ant-...      # Windows (CMD)
 ```
 
 ---
@@ -152,18 +152,26 @@ Fiddler Everywhere ships a dedicated terminal that automatically configures the 
 
    **macOS / Linux**
    ```bash
-   export http_proxy=http://127.0.0.1:8866
-   export https_proxy=http://127.0.0.1:8866
    export SSL_CERT_FILE=~/Desktop/Fiddler_Root_Certificate_Authority.pem
    export REQUESTS_CA_BUNDLE=~/Desktop/Fiddler_Root_Certificate_Authority.pem
+   export FIDDLER_PROXY=http://127.0.0.1:8866
+   export USE_PROXY=true
    ```
 
-   **Windows**
+   **Windows (CMD)**
    ```cmd
-   set http_proxy=http://127.0.0.1:8866
-   set https_proxy=http://127.0.0.1:8866
    set SSL_CERT_FILE=%USERPROFILE%\Desktop\Fiddler_Root_Certificate_Authority.pem
    set REQUESTS_CA_BUNDLE=%USERPROFILE%\Desktop\Fiddler_Root_Certificate_Authority.pem
+   set FIDDLER_PROXY=http://127.0.0.1:8866
+   set USE_PROXY=true
+   ```
+
+   **Windows (Git Bash)**
+   ```bash
+   export SSL_CERT_FILE="$HOME/Desktop/Fiddler_Root_Certificate_Authority.pem"
+   export REQUESTS_CA_BUNDLE="$HOME/Desktop/Fiddler_Root_Certificate_Authority.pem"
+   export FIDDLER_PROXY=http://127.0.0.1:8866
+   export USE_PROXY=true
    ```
 
 3. Pass the certificate path to `httpx` explicitly and remove `verify=False`:
