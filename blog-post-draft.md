@@ -112,7 +112,10 @@ source .venv/bin/activate      # macOS / Linux
 .venv\Scripts\activate         # Windows
 
 pip install -r requirements.txt
-export ANTHROPIC_API_KEY=sk-ant-...
+
+# Obtain your Claude API key from the Anthopic Console
+export ANTHROPIC_API_KEY=sk-ant-... # macOS / Linux (Git Bash)
+set ANTHROPIC_API_KEY=sk-ant-... # Windows (CMD)
 ```
 
 ### Step 1 — The First Live Call

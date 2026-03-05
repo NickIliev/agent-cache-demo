@@ -129,7 +129,8 @@ source .venv/bin/activate      # macOS / Linux
 .venv\Scripts\activate         # Windows
 
 pip install -r requirements.txt
-export ANTHROPIC_API_KEY=sk-ant-...
+export ANTHROPIC_API_KEY=sk-ant-... # macOS / Linux (Git Bash)
+set ANTHROPIC_API_KEY=sk-ant-... # Windows (CMD)
 ```
 
 The demo supports routing traffic through Fiddler's proxy or running directly against the provider. It also covers SSL/TLS trust configuration for HTTPS interception. See the [repository README](https://github.com/NickIliev/agent-cache-demo#readme) for full details on proxy setup, environment variables, and certificate options.
