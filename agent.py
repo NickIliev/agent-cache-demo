@@ -31,7 +31,7 @@ import anthropic
 # ---------------------------------------------------------------------------
 
 FIDDLER_PROXY = os.environ.get("FIDDLER_PROXY", "http://127.0.0.1:8866")
-USE_PROXY = os.environ.get("USE_PROXY", "true").lower() == "true" # Alternatively, set to "false" and use the Fiddler's terminal to forward traffic only when needed.
+USE_PROXY = os.environ.get("USE_PROXY", "true").lower() == "false" # Alternatively, set to "false" and use the Fiddler's terminal to forward traffic only when needed.
 API_KEY = os.environ.get("ANTHROPIC_API_KEY") 
 MODEL = os.environ.get("ANTHROPIC_MODEL", "claude-sonnet-4-20250514")
 

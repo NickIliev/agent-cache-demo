@@ -224,4 +224,15 @@ Agent Cache does not change how you build agents. It just removes the tax on ite
 
 ---
 
-*Fiddler Everywhere is available at [telerik.com/fiddler](https://www.telerik.com/fiddler). The demo project is at [github.com/your-org/agent-cache-demo](https://github.com/your-org/agent-cache-demo).*
+## Leave Feedback
+
+Agent development workflows are still evolving quickly, and your feedback shapes what comes next. If you try Agent Cache during development — or if there is something you wish it did differently — we want to hear about it.
+
+- Email: [fiddler-support@progress.com](mailto:fiddler-support@progress.com)
+- GitHub issues: [github.com/telerik/fiddler-everywhere/issues](https://github.com/telerik/fiddler-everywhere/issues)
+- Demo repository: [github.com/NickIliev/agent-cache-demo](https://github.com/NickIliev/agent-cache-demo)
+
+---
+
+*Fiddler Everywhere is available at [telerik.com/fiddler](https://www.telerik.com/fiddler).*
+
