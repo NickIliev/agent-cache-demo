@@ -108,9 +108,9 @@ Fiddler Everywhere intercepts the outbound call and immediately returns the cach
 ## How It Works
 
 ```
-┌─────────────┐   HTTPS (proxied)   ┌──────────────────────┐   HTTPS   ┌──────────────────┐
-│  agent.py   │ ──────────────────► │  Fiddler Everywhere  │ ────────► │  api.anthropic.com│
-│             │                     │  (Agent Calls tab)   │           └──────────────────┘
+┌─────────────┐   HTTPS (proxied)   ┌──────────────────────┐   HTTPS   ┌────────────────────┐
+│  agent.py   │ ──────────────────► │  Fiddler Everywhere  │ ────────► │  api.anthropic.com │
+│             │                     │  (Agent Calls tab)   │           └────────────────────┘
 │             │ ◄────────────────── │                      │ ◄──────── response
 └─────────────┘   response          └──────────────────────┘
                                             │
