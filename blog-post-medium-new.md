@@ -62,7 +62,7 @@ No code changes. No mock files. No replay logic. Your agent runs exactly as it w
 
 Fiddler Everywhere adds an **Agent Calls** tab in its Traffic pane. This tab automatically filters captured sessions to show only calls targeting supported model-provider endpoints — OpenAI, Anthropic, Google Gemini, Mistral, Cohere, DeepSeek, and [over 30 other providers and inference gateways](https://www.telerik.com/fiddler/fiddler-everywhere/documentation/inspect-traffic/agent-cache).
 
-Each session has a **Cache** toggle. Enable it, and Fiddler replays that response for every matching subsequent request.
+Each session has a **Caching** toggle. Enable it, and Fiddler replays that response for every matching subsequent request.
 
 ![Screenshot of the Fiddler Everywhere Agent Calls tab showing multiple cached API calls to api.anthropic.com](screenshots/agent-calls-cached-sessions.png)
 *The Agent Calls tab with cached sessions. Each toggled-on session returns its stored response instantly — no live call, no tokens spent.*

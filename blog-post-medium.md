@@ -55,7 +55,7 @@ Different teams solve the same problem with different local tooling. The approac
 
 [Fiddler Everywhere](https://www.telerik.com/fiddler/fiddler-everywhere) is a network debugging proxy — it sits between your agent and the remote endpoint, capturing and inspecting HTTPS traffic. Its new **Agent Cache** feature applies that position to the specific problem described above.
 
-Here is the idea: Fiddler automatically detects calls to model-provider endpoints (OpenAI, Anthropic, Gemini, Mistral, Cohere, and [dozens more](https://www.telerik.com/fiddler/fiddler-everywhere/documentation/inspect-traffic/agent-cache)) and surfaces them in a dedicated **Agent Calls** tab. Each captured call gets a **Cache** toggle. Enable the toggle, and Fiddler intercepts any subsequent matching outbound call and immediately returns the cached response — without forwarding the request to the provider. Token cost: zero. Latency: instant. Output: identical every time.
+Here is the idea: Fiddler automatically detects calls to model-provider endpoints (OpenAI, Anthropic, Gemini, Mistral, Cohere, and [dozens more](https://www.telerik.com/fiddler/fiddler-everywhere/documentation/inspect-traffic/agent-cache)) and surfaces them in a dedicated **Agent Calls** tab. Each captured call gets a **Caching** toggle. Enable the toggle, and Fiddler intercepts any subsequent matching outbound call and immediately returns the cached response — without forwarding the request to the provider. Token cost: zero. Latency: instant. Output: identical every time.
 
 Disable the toggle whenever you want to resume live calls. No restarts, no code changes.
 
@@ -117,7 +117,7 @@ In Fiddler, open **Traffic → Agent Calls**. The call to `api.anthropic.com` is
 
 ### Step 2 — Enable caching
 
-Find the captured session in the **Agent Calls** grid and flip its **Cache** switch to on. That is the entire setup.
+Find the captured session in the **Agent Calls** grid and flip its **Caching** switch to on. That is the entire setup.
 
 ### Step 3 — Run again
 

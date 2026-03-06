@@ -152,7 +152,7 @@ For details on applying managed configuration policies, see [Managed App Configu
 
 We welcome your feedback on Agent Cache and any other features you would like to see. You can reach the team by:
 
-- Emailing [fiddler-support@progress.com](mailto:fiddler-support@progress.com)
+- Email [fiddler-support@progress.com](mailto:fiddler-support@progress.com)
 - Opening a GitHub issue at [https://github.com/telerik/fiddler-everywhere/issues](https://github.com/telerik/fiddler-everywhere/issues)
 
 ## See Also

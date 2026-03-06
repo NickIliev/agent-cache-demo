@@ -41,7 +41,7 @@ The problem is not a lack of solutions. It is the lack of a low-friction one tha
 
 Fiddler Everywhere acts as a proxy that sits between your agent and the remote endpoint. When your agent makes an HTTPS call to, say, `api.anthropic.com`, Fiddler intercepts it, forwards it, and logs the full request–response pair in the **Traffic** pane.
 
-The new **Agent Calls** tab is a focused view inside that pane. It automatically filters and displays HTTPS sessions that target supported model-provider endpoints — such as OpenAI, Anthropic, and Gemini — so you are not wading through noise from other traffic. Every captured call gets a **Cache** toggle.
+The new **Agent Calls** tab is a focused view inside that pane. It automatically filters and displays HTTPS sessions that target supported model-provider endpoints — such as OpenAI, Anthropic, and Gemini — so you are not wading through noise from other traffic. Every captured call gets a **Caching** toggle.
 
 Enable the toggle, and Fiddler starts intercepting any outbound call that matches that session's request. Instead of forwarding the request, it immediately returns the cached response. The endpoint never receives the duplicate call. Your agent sees the exact same payload it would have received from a live call. Token count: zero.
 
@@ -155,7 +155,7 @@ This is your baseline. You paid for 380 tokens. That is fair — you needed the 
 
 ### Step 2 — Enable the Cache
 
-In the **Agent Calls** grid, find the captured session and flip its **Cache** switch to on. That is the entire configuration step.
+In the **Agent Calls** grid, find the captured session and flip its **Caching** switch to on. That is the entire configuration step.
 
 ### Step 3 — All Subsequent Runs Are Free
 
@@ -165,7 +165,7 @@ Run the agent again:
 python agent.py
 ```
 
-The output in the terminal is byte-for-byte identical to the first run, including the token count display. Because the **Cache** switch was on, Fiddler served the stored response immediately and never forwarded the request to the provider. The endpoint never saw the call.
+The output in the terminal is byte-for-byte identical to the first run, including the token count display. Because the **Caching** switch was on, Fiddler served the stored response immediately and never forwarded the request to the provider. The endpoint never saw the call.
 
 You can now iterate on `agent.py` as many times as you need — refactor the display logic, adjust the JSON parsing, add logging — and none of those runs cost a single token.
 

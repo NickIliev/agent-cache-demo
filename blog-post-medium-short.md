@@ -36,7 +36,7 @@ That's what **Agent Cache** in [Fiddler Everywhere](https://www.telerik.com/fidd
 
 Fiddler Everywhere is a network proxy — it sits between your code and the internet, capturing HTTPS traffic. Its **Agent Calls** tab automatically recognizes calls to model providers (OpenAI, Anthropic, Gemini, Mistral, Cohere, DeepSeek — [over 30 in total](https://www.telerik.com/fiddler/fiddler-everywhere/documentation/inspect-traffic/agent-cache)) and displays them in a clean, focused grid.
 
-Each captured call gets a **Cache** toggle. Flip it on, and every subsequent matching request gets the stored response back instantly. Flip it off, and live traffic resumes. That's it. That's the whole workflow.
+Each captured call gets a **Caching** toggle. Flip it on, and every subsequent matching request gets the stored response back instantly. Flip it off, and live traffic resumes. That's it. That's the whole workflow.
 
 ![Screenshot of the Fiddler Everywhere Agent Calls tab showing multiple cached API calls with the Cache toggle enabled for each session.](screenshots/agent-calls-cached-sessions.png)
 *The Agent Calls tab in Fiddler Everywhere. Each cached session replays its response instantly — zero tokens, zero latency.*
