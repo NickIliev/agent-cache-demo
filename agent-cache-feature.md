@@ -43,6 +43,14 @@ The feature is **not available** for Lite licenses.
 
 ## Supported Endpoints
 
+The **Agent Calls** tab automatically detects and displays sessions targeting a broad range of model-provider and inference-gateway endpoints—including major providers, cloud-hosted inference services, and local runners—without any manual configuration.
+
+If a session targeting your agent's API endpoint does not appear in **Agent Calls** automatically, you can promote it manually. Right-click the session in **Live Traffic** and select **Add to Agent Calls** from the context menu. The session then appears in the **Agent Calls** tab and can be cached like any automatically detected session.
+
+This is useful when working with locally hosted inference endpoints, internal gateway services, or newer providers not yet included in the built-in detection list.
+
+<!-- ## Supported Endpoints
+
 The **Agent Calls** tab automatically detects and displays sessions targeting the following model-provider and inference-gateway endpoints. No manual configuration is required.
 
 ### Model Providers
@@ -101,13 +109,8 @@ The **Agent Calls** tab automatically detects and displays sessions targeting th
 | Ollama | `localhost:11434`, `127.0.0.1:11434` | `/api/generate`, `/api/chat`, `/api/embeddings`, `/v1/chat/completions` |
 | LM Studio | `localhost:1234`, `127.0.0.1:1234` | `/v1/chat/completions`, `/v1/completions`, `/v1/embeddings` |
 
->tip "All paths" means Fiddler matches any request path to that host. Where specific paths are listed, only requests matching those path prefixes are included.
+>tip "All paths" means Fiddler matches any request path to that host. Where specific paths are listed, only requests matching those path prefixes are included. -->
 
-### Adding Custom Endpoints
-
-If your agent calls a provider or endpoint that is not automatically recognized, you can manually promote any session from the **Live Traffic** grid to **Agent Calls**. Right-click the session in **Live Traffic** and select the option to add it to **Agent Calls** from the context menu. The session then appears in the **Agent Calls** tab and can be cached like any automatically detected session.
-
-This is useful when you work with self-hosted models, internal gateway services, or newer providers that are not yet included in the built-in endpoint list.
 
 ## The Agent Calls Tab
 
