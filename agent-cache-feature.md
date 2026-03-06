@@ -3,7 +3,7 @@ title: Agent Cache
 description: "Use the Agent Calls tab in Fiddler Everywhere to capture, inspect, and cache model-provider endpoint responses and eliminate repeated token usage during development."
 slug: agent-cache
 publish: true
-position: 60
+position: 57
 ---
 
 # Agent Cache
@@ -41,84 +41,13 @@ The **Agent Calls** tab is available for:
 
 The feature is **not available** for Lite licenses.
 
-## Supported Endpoints
-
-The **Agent Calls** tab automatically detects and displays sessions targeting a broad range of model-provider and inference-gateway endpoints—including major providers, cloud-hosted inference services, and local runners—without any manual configuration.
-
-If a session targeting your agent's API endpoint does not appear in **Agent Calls** automatically, you can promote it manually. Right-click the session in **Live Traffic** and select **Add to Agent Calls** from the context menu. The session then appears in the **Agent Calls** tab and can be cached like any automatically detected session.
-
-This is useful when working with locally hosted inference endpoints, internal gateway services, or newer providers not yet included in the built-in detection list.
-
-<!-- ## Supported Endpoints
-
-The **Agent Calls** tab automatically detects and displays sessions targeting the following model-provider and inference-gateway endpoints. No manual configuration is required.
-
-### Model Providers
-
-| Provider | Host | Paths |
-|:---------|:-----|:------|
-| OpenAI | `api.openai.com` | `/v1/chat/completions`, `/v1/completions`, `/v1/responses`, `/v1/embeddings`, `/v1/images`, `/v1/audio`, `/v1/moderations` |
-| Anthropic | `api.anthropic.com` | `/v1/messages`, `/v1/complete` |
-| Google – Gemini / Vertex AI | `generativelanguage.googleapis.com` | All paths |
-| Google – Gemini / Vertex AI | `aiplatform.googleapis.com` | All paths |
-| Google – AI Studio | `aistudio.google.com` | `/api/` |
-| Mistral AI | `api.mistral.ai` | `/v1/chat/completions`, `/v1/completions`, `/v1/embeddings` |
-| Cohere | `api.cohere.ai`, `api.cohere.com` | `/v1/chat`, `/v1/generate`, `/v1/embed`, `/v2/chat` |
-| AI21 Labs | `api.ai21.com` | `/studio/v1/`, `/v1/chat/completions` |
-| xAI (Grok) | `api.x.ai` | `/v1/chat/completions`, `/v1/completions` |
-| Meta Llama | `api.llama.com`, `api.llama-api.com` | All paths |
-| Perplexity | `api.perplexity.ai` | `/chat/completions` |
-| DeepSeek | `api.deepseek.com` | `/v1/chat/completions`, `/v1/completions` |
-| Zhipu AI (GLM) | `open.bigmodel.cn` | `/api/paas/` |
-| Moonshot / Kimi | `api.moonshot.cn` | `/v1/chat/completions` |
-| Minimax | `api.minimax.chat` | All paths |
-| 01.AI (Yi) | `api.01.ai` | `/v1/chat/completions` |
-| Reka | `api.reka.ai` | All paths |
-| Aleph Alpha | `api.aleph-alpha.com` | `/complete`, `/evaluate`, `/embed` |
-| Writer | `api.writer.com` | `/v1/chat`, `/v1/completions` |
-
-### Inference and Gateway Providers
-
-| Provider | Host | Paths |
-|:---------|:-----|:------|
-| Azure OpenAI | `*.openai.azure.com` | `/openai/deployments/` |
-| Amazon Bedrock | `bedrock-runtime.amazonaws.com`, `bedrock.amazonaws.com` | All paths |
-| OpenRouter | `openrouter.ai` | `/api/v1/chat/completions`, `/api/v1/completions` |
-| Hugging Face | `api-inference.huggingface.co` | All paths |
-| Hugging Face | `huggingface.co` | `/api/models/` |
-| Together AI | `api.together.xyz`, `api.together.ai` | `/v1/chat/completions`, `/v1/completions`, `/v1/embeddings`, `/inference` |
-| Fireworks AI | `api.fireworks.ai` | `/inference/` |
-| Replicate | `api.replicate.com` | `/v1/predictions`, `/v1/models/` |
-| Groq | `api.groq.com` | `/openai/v1/chat/completions`, `/openai/v1/completions` |
-| Cerebras | `api.cerebras.ai` | `/v1/chat/completions` |
-| SambaNova | `api.sambanova.ai` | `/v1/chat/completions` |
-| Lepton AI | `api.lepton.ai` | All paths |
-| Anyscale | `api.endpoints.anyscale.com` | `/v1/chat/completions`, `/v1/completions` |
-| DeepInfra | `api.deepinfra.com` | `/v1/openai/chat/completions`, `/v1/openai/completions`, `/v1/inference/` |
-| OVH AI Endpoints | `ai.endpoints.ovh.net` | All paths |
-| Cloudflare Workers AI | `api.cloudflare.com` | `/client/v4/accounts/`, `/v1/chat/completions` |
-| IBM watsonx.ai | `*.ml.cloud.ibm.com` | `/ml/v1/text/generation`, `/ml/v1/text/chat` |
-| NVIDIA NIM / NGC | `integrate.api.nvidia.com` | `/v1/chat/completions`, `/v1/completions`, `/v1/embeddings` |
-| Databricks | `databricks.com` | `/serving-endpoints/`, `/api/2.0/serving-endpoints/` |
-| Oracle OCI Generative AI | `inference.generativeai.oci.oraclecloud.com` | All paths |
-
-### Local Runners
-
-| Provider | Host | Paths |
-|:---------|:-----|:------|
-| Ollama | `localhost:11434`, `127.0.0.1:11434` | `/api/generate`, `/api/chat`, `/api/embeddings`, `/v1/chat/completions` |
-| LM Studio | `localhost:1234`, `127.0.0.1:1234` | `/v1/chat/completions`, `/v1/completions`, `/v1/embeddings` |
-
->tip "All paths" means Fiddler matches any request path to that host. Where specific paths are listed, only requests matching those path prefixes are included. -->
-
-
 ## The Agent Calls Tab
 
 The **Agent Calls** grid includes the same key columns as **Live Traffic**—for example, **#**, **Host**, **URL**, **Method**, **Status**, **Body**, and **Duration**—giving you full visibility into each captured endpoint call.
 
 Additional behaviors to keep in mind:
 
-- Sessions appear in **Agent Calls** deterministically when Fiddler detects traffic to supported agentic endpoints.
+- Sessions appear in **Agent Calls** automatically when Fiddler detects traffic to supported agentic endpoints.
 - If two or more identical endpoints are cached (for example `https://api.anthropic.com/v1/messages`), Fiddler returns the response from the first cached session.
 - Fiddler rules apply only to non-cached sessions. Cached responses are returned as-is without rule evaluation.
 - After a session is cached, subsequent requests to that endpoint appear only in **Live Traffic**. **Agent Calls** shows the original non-cached requests.
@@ -152,26 +81,54 @@ You can disable the **Cache** switch at any time to resume live calls to the end
 The following diagram shows the request flow when Agent Cache is active.
 
 ```
-┌─────────────┐   HTTPS (proxied)   ┌──────────────────────┐   HTTPS   ┌────────────────────┐
-│  Your Agent │ ──────────────────► │  Fiddler Everywhere  │ ────────► │  Model Provider    │
-│             │                     │  (Agent Calls tab)   │           └────────────────────┘
-│             │ ◄────────────────── │                      │ ◄──────── response
-└─────────────┘   response          └──────────────────────┘
-                                            │
-                                     Cache switch ON?
-                                            │
-                                    ┌───────▼────────┐
-                                    │ Return cached  │
-                                    │ response.      │
-                                    │ No new call to │
-                                    │ the provider.  │
-                                    └────────────────┘
+┌─────────────────────┐
+│    Your Agent       │
+└──────────┬──────────┘
+           │ HTTPS request (proxied)
+           ▼
+┌─────────────────────┐
+│ Fiddler Everywhere  │
+│  (Agent Calls tab)  │
+└──────────┬──────────┘
+           │
+      Cache ON?
+           │
+    ┌──────┴──────┐
+    │             │
+   YES           NO
+    │             │
+    ▼             ▼
+┌─────────┐  ┌─────────┐
+│ Return  │  │ Forward │
+│ cached  │  │ request │
+│response │  └────┬────┘
+└────┬────┘       │ HTTPS
+     │            ▼
+     │    ┌──────────────┐
+     │    │   Provider   │
+     │    └──────┬───────┘
+     │           │ response
+     │           │
+     └───────────┤
+                 ▼
+          ┌─────────────┐
+          │ Your Agent  │
+          │  (response) │
+          └─────────────┘
 ```
 
 1. Your agent routes HTTPS traffic through Fiddler Everywhere, either by configuring a proxy in code, by using system proxy settings, or by launching the agent from Fiddler's built-in terminal.
 2. Fiddler captures the call and displays it in the **Agent Calls** tab.
 3. When the **Cache** switch is enabled for that session, Fiddler replays the stored response for any matching subsequent call.
 4. The provider endpoint never receives the duplicate request—no tokens are charged.
+
+## Supported Endpoints
+
+The **Agent Calls** tab automatically detects and displays sessions targeting a broad range of model-provider and inference-gateway endpoints—including major providers, cloud-hosted inference services, and local runners—without any manual configuration.
+
+If a session targeting your agent's API endpoint does not appear in **Agent Calls** automatically, you can promote it manually. Right-click the session in **Live Traffic** and select **Add to Agent Calls** from the context menu. The session then appears in the **Agent Calls** tab and can be cached like any automatically detected session.
+
+This is useful when working with locally hosted inference endpoints, internal gateway services, or newer providers not yet included in the built-in detection list.
 
 ## Managed App Configuration
 
@@ -197,3 +154,9 @@ We welcome your feedback on Agent Cache and any other features you would like to
 
 - Emailing [fiddler-support@progress.com](mailto:fiddler-support@progress.com)
 - Opening a GitHub issue at [https://github.com/telerik/fiddler-everywhere/issues](https://github.com/telerik/fiddler-everywhere/issues)
+
+## See Also
+
+* [Fiddler's MCP Server - Overview](slug://fiddler-mcp-server)
+* [Fiddler's MCP Server - Prompt Ideas](slug://fiddler_ai_prompt_library)
+* [Fiddler's Debugging Assistant](slug://fiddler-assistant)
