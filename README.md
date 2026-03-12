@@ -1,6 +1,6 @@
 # Agent Cache Demo — Bug Report Analyzer
 
-This project demonstrates [Fiddler Everywhere's Agent Cache](../inspect-traffic/agent-cache.md) feature using a minimal Python agent.
+This project demonstrates [Fiddler Everywhere's Agent Cache](https://www.telerik.com/fiddler/fiddler-everywhere/documentation/agent-cache) feature using a minimal Python agent.
 
 The agent sends a fixed bug report to the Claude API and returns a structured analysis (severity, category, summary, and a suggested next step). Because the input is identical on every run, it is a perfect match for Agent Cache: after the first real call, Fiddler Everywhere can serve every subsequent run from cache—consuming zero additional tokens on the provider side.
 
