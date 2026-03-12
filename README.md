@@ -137,9 +137,9 @@ The demo disables SSL verification (`verify=False`) so `httpx` accepts Fiddler's
 
 There are two recommended approaches for removing `verify=False` in non-demo use.
 
-### Option A — Use Fiddler's built-in terminal
+### Option A — Use Fiddler's built-in terminal (recommended)
 
-Fiddler Everywhere ships a dedicated terminal that automatically configures the proxy and trusts the Fiddler CA — no manual certificate work required.
+This is the easier option. Fiddler Everywhere ships a [dedicated terminal](https://www.telerik.com/fiddler/fiddler-everywhere/documentation/capture-traffic/capturing-traffic-from-terminal) that automatically configures the proxy and trusts the Fiddler CA — no manual certificate work required.
 
 1. In Fiddler Everywhere, click **Open Terminal**.
 2. Run `python agent.py` inside that terminal.
